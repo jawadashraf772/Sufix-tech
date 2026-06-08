@@ -94,9 +94,9 @@ h2 {
 
 h2 .highlight {
   color: var(--primary-red-glow);
-  background: linear-gradient(135deg, #ff6b6b, var(--primary-red-glow));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
 }
 
 p {
@@ -388,7 +388,7 @@ nav a:hover {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
-  align-items: center;
+  align-items: stretch;
 }
 
 .pain-visual {
@@ -397,6 +397,21 @@ nav a:hover {
   justify-content: center;
   align-items: center;
   order: 2;                  /* ← Image moves to RIGHT column */
+  background: #0b0b0d;       /* Dark frame background matching screenshot */
+  border: 1px solid rgba(191, 6, 6, 0.25);
+  border-radius: var(--border-radius-md);
+  padding: 30px;             /* Padding around inner card */
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(191, 6, 6, 0.08);
+  transition: var(--transition-smooth);
+}
+
+.pain-visual:hover {
+  border-color: rgba(191, 6, 6, 0.4);
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(191, 6, 6, 0.15);
 }
 
 .pain-content {
@@ -406,23 +421,15 @@ nav a:hover {
 .pain-visual img {
   max-width: 100%;
   height: auto;
-  border-radius: var(--border-radius-md);
+  border-radius: 12px;       /* Inner image rounded corners */
   z-index: 2;
   position: relative;
-  border: 1px solid rgba(191, 6, 6, 0.25);
-  box-shadow:
-    0 0 0 8px rgba(191, 6, 6, 0.05),
-    0 30px 60px rgba(0, 0, 0, 0.5),
-    0 0 40px rgba(191, 6, 6, 0.12);
+  display: block;
   transition: var(--transition-smooth);
 }
 
-.pain-visual img:hover {
+.pain-visual:hover img {
   transform: scale(1.02);
-  box-shadow:
-    0 0 0 8px rgba(191, 6, 6, 0.1),
-    0 40px 80px rgba(0, 0, 0, 0.6),
-    0 0 60px rgba(191, 6, 6, 0.2);
 }
 
 .pain-visual::before {
@@ -437,6 +444,7 @@ nav a:hover {
   border-radius: 0 var(--border-radius-sm) 0 0;
   z-index: 3;
   opacity: 0.8;
+  pointer-events: none;
 }
 
 .pain-visual::after {
@@ -447,6 +455,7 @@ nav a:hover {
   background: radial-gradient(circle, rgba(191, 6, 6, 0.15) 0%, transparent 60%);
   filter: blur(20px);
   z-index: 1;
+  pointer-events: none;
 }
 
 .pain-content h2 {
@@ -457,14 +466,14 @@ nav a:hover {
 .pain-list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
 .pain-item {
   display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  padding: 16px;
+  gap: 20px;
+  align-items: center;
+  padding: 16px 20px;
   border-radius: var(--border-radius-sm);
   background: var(--bg-card);
   border: 1px solid var(--border-card);
@@ -478,27 +487,30 @@ nav a:hover {
 }
 
 .pain-icon {
-  width: 24px;
-  height: 24px;
-  min-width: 24px;
-  background: rgba(191, 6, 6, 0.15);
-  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  background: rgba(191, 6, 6, 0.05);
+  border: 1px solid rgba(191, 6, 6, 0.4);
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--primary-red-glow);
-  font-size: 0.75rem;
-  font-weight: 900;
-  margin-top: 2px;
+  font-size: 0.7rem;
+  font-weight: 800;
 }
 
 .pain-item p {
-  font-size: 1rem;
-  color: var(--text-white);
+  font-size: 0.95rem;
+  color: var(--text-gray);
+  line-height: 1.5;
+  margin: 0;
 }
 
 .pain-item p strong {
   color: var(--primary-red-glow);
+  font-weight: 600;
 }
 
 .pain-quote-container {
@@ -1006,6 +1018,8 @@ footer {
     order: 2;
     max-width: 500px;
     margin: 0 auto;
+    width: 100%;
+    padding: 24px;
   }
   .process-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1020,6 +1034,19 @@ footer {
   
   .header-container {
     height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+  }
+  
+  .logo img {
+    height: 38px;
+  }
+  
+  #nav-link-cta {
+    padding: 8px 16px;
+    font-size: 0.85rem;
   }
   
   nav {
@@ -1067,6 +1094,16 @@ footer {
 }
 
 @media (max-width: 480px) {
+  .header-container {
+    padding: 0 16px;
+  }
+  .logo img {
+    height: 32px;
+  }
+  #nav-link-cta {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
   .process-grid {
     grid-template-columns: 1fr;
   }
