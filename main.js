@@ -103,30 +103,56 @@ document.addEventListener('DOMContentLoaded', () => {
   const successMessage = document.getElementById('success-message');
   const submitButton = document.getElementById('submit-booking-btn');
 
+  const GHL_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/EOHnOtxAxO3NZV7FKamH/webhook-trigger/8b2bd2db-add4-4183-909e-6040af1ffef1';
+
   if (bookingForm) {
-    bookingForm.addEventListener('submit', (e) => {
+    bookingForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      // Collect all form data
+      const formData = {
+        full_name:       document.getElementById('full-name').value.trim(),
+        email:           document.getElementById('email-address').value.trim(),
+        website:         document.getElementById('company-website').value.trim(),
+        service_needed:  document.getElementById('service-needed').value,
+        message:         document.getElementById('message').value.trim(),
+        submitted_at:    new Date().toISOString(),
+        source:          'SufixTech GHL Landing Page'
+      };
 
       // Show loading state
       const originalBtnText = submitButton.textContent;
       submitButton.disabled = true;
-      submitButton.textContent = 'SCHEDULING CALL...';
+      submitButton.textContent = 'SUBMITTING...';
 
-      // Simulate API submit delay
-      setTimeout(() => {
-        // Transition form out
-        bookingForm.style.transition = 'opacity 0.3s ease';
-        bookingForm.style.opacity = '0';
-        
-        setTimeout(() => {
-          bookingForm.style.display = 'none';
-          successMessage.style.display = 'block';
-          
-          // Scroll to the booking section header
-          document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
-        }, 300);
-        
-      }, 1500);
+      try {
+        const response = await fetch(GHL_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        if (response.ok) {
+          // Success — fade out form and show confirmation
+          bookingForm.style.transition = 'opacity 0.3s ease';
+          bookingForm.style.opacity = '0';
+
+          setTimeout(() => {
+            bookingForm.style.display = 'none';
+            successMessage.style.display = 'block';
+            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+          }, 300);
+        } else {
+          throw new Error(`Server responded with status ${response.status}`);
+        }
+
+      } catch (err) {
+        console.error('Webhook submission error:', err);
+        alert('Something went wrong. Please try again or contact us directly.');
+        // Restore button so user can retry
+        submitButton.disabled = false;
+        submitButton.textContent = originalBtnText;
+      }
     });
   }
 
