@@ -333,67 +333,83 @@ nav a:hover {
   margin-bottom: 70px;
 }
 
-.hero-badge-container {
+/* Awards Section */
+.awards-section {
+  padding: 60px 0;
+  background-color: rgba(255, 255, 255, 0.01);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  position: relative;
+}
+
+.awards-grid {
   display: flex;
   justify-content: center;
-  gap: 30px;
-  align-items: center;
+  gap: 40px;
+  align-items: stretch;
   flex-wrap: wrap;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding-top: 50px;
   max-width: 950px;
   margin: 0 auto;
 }
 
-.hero-badge {
+.award-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 20px;
-  opacity: 1;
+  text-align: center;
+  flex: 1;
+  min-width: 290px;
+  max-width: 440px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--border-radius-md);
-  padding: 20px 30px;
+  padding: 35px 30px;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   transition: var(--transition-smooth);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-  flex: 1;
-  min-width: 320px;
-  max-width: 440px;
 }
 
-.hero-badge:hover {
-  transform: translateY(-4px);
+.award-item:hover {
+  transform: translateY(-5px);
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(191, 6, 6, 0.45);
   box-shadow: 0 15px 35px rgba(191, 6, 6, 0.2);
 }
 
-.hero-badge img {
-  height: 90px;
+.award-item img {
+  height: 180px;
   width: auto;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+  object-fit: contain;
+  margin-bottom: 25px;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+  transition: var(--transition-smooth);
 }
 
-.hero-badge-text {
-  text-align: left;
+.award-item:hover img {
+  transform: scale(1.04);
+  filter: drop-shadow(0 12px 24px rgba(191, 6, 6, 0.25));
 }
 
-.hero-badge-text p {
+.award-text {
+  text-align: center;
+}
+
+.award-provider {
+  display: block;
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--primary-blue);
   font-weight: 700;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
-.hero-badge-text h4 {
-  font-size: 1.1rem;
+.award-title {
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--text-white);
-  line-height: 1.3;
+  line-height: 1.35;
 }
 
 
@@ -1086,8 +1102,15 @@ footer {
     margin: 0 auto 50px;
   }
   
-  .hero-badge-container {
+  .awards-grid {
     gap: 24px;
+  }
+  .award-item {
+    padding: 25px 20px;
+  }
+  .award-item img {
+    height: 140px;
+    margin-bottom: 15px;
   }
   
   .booking-form {
