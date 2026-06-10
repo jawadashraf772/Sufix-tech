@@ -23,6 +23,15 @@
   --border-radius-sm: 8px;
   --border-radius-md: 16px;
   --border-radius-lg: 24px;
+
+  /* Spacing Scale (8px Grid System) */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-xxl: 64px;
+  --space-section: 60px;
 }
 
 /* Base resets & styles */
@@ -69,7 +78,7 @@ body {
 }
 
 section {
-  padding: 100px 0;
+  padding: var(--space-section) 0;
   position: relative;
 }
 
@@ -88,8 +97,24 @@ h1 {
 h2 {
   font-size: clamp(2rem, 4vw, 2.75rem);
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: var(--space-xl);
   letter-spacing: -0.01em;
+}
+
+/* Section Header Utility */
+.section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--space-xl);
+}
+
+.section-header h2 {
+  margin-bottom: var(--space-sm);
+}
+
+.section-header p {
+  color: var(--text-gray);
+  font-size: 1.1rem;
 }
 
 h2 .highlight {
@@ -282,8 +307,8 @@ nav a:hover {
 
 /* Hero Section */
 .hero {
-  padding-top: 180px;
-  padding-bottom: 120px;
+  padding-top: 140px;
+  padding-bottom: var(--space-section);
   text-align: center;
   position: relative;
 }
@@ -330,12 +355,12 @@ nav a:hover {
   display: flex;
   gap: 16px;
   justify-content: center;
-  margin-bottom: 70px;
+  margin-bottom: var(--space-xl);
 }
 
 /* Awards Section */
 .awards-section {
-  padding: 60px 0;
+  padding: var(--space-section) 0;
   background-color: rgba(255, 255, 255, 0.01);
   border-top: 1px solid rgba(255, 255, 255, 0.04);
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
@@ -345,7 +370,7 @@ nav a:hover {
 .awards-grid {
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: var(--space-md);
   align-items: stretch;
   flex-wrap: wrap;
   max-width: 950px;
@@ -363,7 +388,7 @@ nav a:hover {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--border-radius-md);
-  padding: 35px 30px;
+  padding: var(--space-md);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   transition: var(--transition-smooth);
@@ -381,7 +406,7 @@ nav a:hover {
   height: 180px;
   width: auto;
   object-fit: contain;
-  margin-bottom: 25px;
+  margin-bottom: var(--space-sm);
   filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
   transition: var(--transition-smooth);
 }
@@ -570,7 +595,7 @@ nav a:hover {
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 30px;
+  gap: var(--space-md);
 }
 
 .testimonial-card {
@@ -733,11 +758,11 @@ nav a:hover {
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 30px;
+  gap: var(--space-md);
 }
 
 .service-card {
-  padding: 40px;
+  padding: var(--space-md);
   border-radius: var(--border-radius-md);
   background: var(--bg-card);
   border: 1px solid var(--border-card);
@@ -778,7 +803,7 @@ nav a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: var(--space-sm);
   border: 1px solid rgba(191, 6, 6, 0.2);
 }
 
@@ -803,9 +828,8 @@ nav a:hover {
 .process-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
+  gap: var(--space-md);
   position: relative;
-  margin-top: 50px;
 }
 
 .process-step {
