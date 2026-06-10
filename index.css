@@ -307,7 +307,7 @@ nav a:hover {
 
 /* Hero Section */
 .hero {
-  padding-top: 140px;
+  padding-top: 200px;
   padding-bottom: var(--space-section);
   text-align: center;
   position: relative;
@@ -1004,7 +1004,7 @@ select option {
 /* Footer Section */
 footer {
   background: #030304;
-  padding: 60px 0 30px;
+  padding: var(--space-xl) 0 var(--space-md);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -1012,9 +1012,9 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: var(--space-md);
   flex-wrap: wrap;
-  gap: 30px;
+  gap: var(--space-md);
 }
 
 .footer-links {
@@ -1039,14 +1039,19 @@ footer {
   justify-content: space-between;
   align-items: center;
   border-top: 1px solid rgba(255, 255, 255, 0.03);
-  padding-top: 30px;
+  padding-top: var(--space-md);
   flex-wrap: wrap;
-  gap: 20px;
+  gap: var(--space-md);
 }
 
 .footer-bottom p {
   font-size: 0.85rem;
   color: var(--text-muted);
+}
+
+.footer-bottom p:last-child {
+  text-align: right;
+  max-width: 600px;
 }
 
 /* Animations */
@@ -1119,7 +1124,7 @@ footer {
   }
   
   .hero {
-    padding-top: 120px;
+    padding-top: 168px;
     padding-bottom: var(--space-section);
   }
   
@@ -1155,6 +1160,11 @@ footer {
     flex-direction: column;
     text-align: center;
     gap: 10px;
+  }
+  
+  .footer-bottom p:last-child {
+    text-align: center;
+    max-width: none;
   }
 }
 
