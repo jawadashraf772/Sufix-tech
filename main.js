@@ -113,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const formData = {
         full_name:       document.getElementById('full-name').value.trim(),
         email:           document.getElementById('email-address').value.trim(),
+        phone:           document.getElementById('phone-number').value.trim(),
         website:         document.getElementById('company-website').value.trim(),
         service_needed:  document.getElementById('service-needed').value,
         message:         document.getElementById('message').value.trim(),
