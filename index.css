@@ -1086,8 +1086,11 @@ footer {
 }
 
 @media (max-width: 768px) {
-  section {
-    padding: 70px 0;
+  :root {
+    --space-section: 48px;
+    --space-xl: 32px;
+    --space-lg: 24px;
+    --space-md: 16px;
   }
   
   .header-container {
@@ -1116,25 +1119,18 @@ footer {
   }
   
   .hero {
-    padding-top: 130px;
-    padding-bottom: 70px;
+    padding-top: 120px;
+    padding-bottom: var(--space-section);
   }
   
   .hero-actions {
     flex-direction: column;
     max-width: 320px;
-    margin: 0 auto 50px;
+    margin: 0 auto var(--space-xl);
   }
   
-  .awards-grid {
-    gap: 24px;
-  }
-  .award-item {
-    padding: 25px 20px;
-  }
   .award-item img {
     height: 140px;
-    margin-bottom: 15px;
   }
   
   .booking-form {
