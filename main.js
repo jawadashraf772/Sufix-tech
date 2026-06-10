@@ -134,15 +134,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (response.ok) {
-          // Success — fade out form and show confirmation
-          bookingForm.style.transition = 'opacity 0.3s ease';
-          bookingForm.style.opacity = '0';
-
-          setTimeout(() => {
-            bookingForm.style.display = 'none';
-            successMessage.style.display = 'block';
-            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
-          }, 300);
+          // Redirect to thank you page
+          window.location.href = `thank-you.html?name=${encodeURIComponent(formData.full_name)}&email=${encodeURIComponent(formData.email)}&whatsapp=${encodeURIComponent(formData.phone)}`;
         } else {
           throw new Error(`Server responded with status ${response.status}`);
         }
