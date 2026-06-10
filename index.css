@@ -307,8 +307,8 @@ nav a:hover {
 
 /* Hero Section */
 .hero {
-  padding-top: 200px;
-  padding-bottom: var(--space-section);
+  padding-top: 140px;
+  padding-bottom: 20px;
   text-align: center;
   position: relative;
 }
@@ -1135,8 +1135,8 @@ footer {
   }
   
   .hero {
-    padding-top: 168px;
-    padding-bottom: var(--space-section);
+    padding-top: 120px;
+    padding-bottom: 20px;
   }
   
   .hero-actions {
