@@ -100,7 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 4. Booking Form Handling
   const bookingForm = document.getElementById('booking-form');
-  const successMessage = document.getElementById('success-message');
   const submitButton = document.getElementById('submit-booking-btn');
 
   const GHL_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/EOHnOtxAxO3NZV7FKamH/webhook-trigger/8b2bd2db-add4-4183-909e-6040af1ffef1';
@@ -134,8 +133,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (response.ok) {
-          // Redirect to thank you page
-          window.location.href = `thank-you.html?name=${encodeURIComponent(formData.full_name)}&email=${encodeURIComponent(formData.email)}&whatsapp=${encodeURIComponent(formData.phone)}`;
+          // Alert user and reset form without hiding it or redirecting
+          alert('Thank you! Your request has been submitted successfully.');
+          
+          // Optionally reset form
+          bookingForm.reset();
+          
+          // Restore button
+          submitButton.disabled = false;
+          submitButton.textContent = originalBtnText;
         } else {
           throw new Error(`Server responded with status ${response.status}`);
         }
