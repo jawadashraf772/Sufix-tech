@@ -133,15 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (response.ok) {
-          // Alert user and reset form without hiding it or redirecting
-          alert('Thank you! Your request has been submitted successfully.');
-          
-          // Optionally reset form
-          bookingForm.reset();
-          
-          // Restore button
-          submitButton.disabled = false;
-          submitButton.textContent = originalBtnText;
+          // Redirect to thank you page
+          window.location.href = 'thank-you.html';
         } else {
           throw new Error(`Server responded with status ${response.status}`);
         }
